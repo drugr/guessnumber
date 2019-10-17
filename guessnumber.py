@@ -1,14 +1,30 @@
 import random
-r = random.randint(1, 100)
-r = str(r)
+start = input('請決定猜數字最小值: ')
+end = input('請決定猜數字最大值: ')
+start = int(start)
+end = int(end)
 while True:
-	num = input('請輸入數字: ')#裡面是字串喔~~~~!!!!
-	#num = int(num)
-	if num == r:
-		print('恭喜猜對了~~!')
-		break
+	if end > start:
+		r = random.randint(start, end)
+		count = 0
+		while True:
+			end = str(end)
+			start = str(start)
+			num = input('請輸入' + start +'到' + end + '中間的數字: ')#裡面是字串喔~~~~!!!!
+			count += 1
+			num = int(num)
+			if num == r:
+				print('恭喜猜對了~~!')
+				print('總共猜了', count, '次喔!!')
+				break
+			elif num > r:
+				print('你猜得太大囉~')
+			elif num < r:
+				print('你猜得太小囉~')
+			print('總共猜了', count, '次喔!!', r)
 	else:
-		if num > r:
-			print('你猜得太大囉~')
-		else:
-			print('你猜得太小囉~')
+		print('最大值要大於最小值喔!!')
+		start = input('請決定猜數字最小值: ')
+		end = input('請決定猜數字最大值: ')
+		start = int(start)
+		end = int(end)
